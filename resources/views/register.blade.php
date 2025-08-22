@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ivory Glow - Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: url('{{ asset('storage/images/bg.jpg') }}') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(139, 90, 43, 0.7), rgba(60, 47, 47, 0.7));
+            z-index: 1;
+        }
+
+        .register-container {
+            background: #f5f5f5;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: #8b5a2b;
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            color: #3c2f2f;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            background: #ffffff;
+            border: 1px solid #8b5a2b;
+            border-radius: 8px;
+            color: #3c2f2f;
+            padding: 8px;
+            font-size: 0.9rem;
+            height: 38px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #d4a373;
+            box-shadow: 0 0 8px rgba(212, 163, 115, 0.3);
+        }
+
+        .form-control.textarea {
+            height: 60px;
+            resize: none;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #8b5a2b;
+            font-size: 1rem;
+        }
+
+        .password-toggle:hover {
+            color: #d4a373;
+        }
+
+        .btn-primary {
+            background: #8b5a2b;
+            color: #f5f5f5;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            padding: 10px;
+            font-size: 0.95rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: #d4a373;
+            transform: translateY(-2px);
+        }
+
+        .btn-link {
+            color: #8b5a2b;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .btn-link:hover {
+            color: #d4a373;
+            text-decoration: underline;
+        }
+
+        .alert {
+            border-radius: 8px;
+            font-size: 0.8rem;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        .brand-logo {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .brand-logo i {
+            font-size: 2.5rem;
+            color: #8b5a2b;
+        }
+
+        .social-login {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .social-login p {
+            color: #3c2f2f;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .social-login .btn {
+            background: #ffffff;
+            border: 1px solid #8b5a2b;
+            color: #8b5a2b;
+            border-radius: 8px;
+            padding: 6px 12px;
+            margin: 0 4px;
+            font-size: 0.9rem;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .social-login .btn:hover {
+            background: #8b5a2b;
+            color: #f5f5f5;
+        }
+
+        @media (max-width: 991px) {
+            .register-container {
+                max-width: 700px;
+                padding: 20px;
+            }
+            .form-control, .btn-primary {
+                font-size: 0.85rem;
+                height: 36px;
+            }
+            .form-control.textarea {
+                height: 50px;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .brand-logo i {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .register-container {
+                max-width: 90%;
+                padding: 15px;
+            }
+            .form-control, .btn-primary {
+                font-size: 0.8rem;
+                height: 34px;
+            }
+            .form-control.textarea {
+                height: 48px;
+            }
+            .form-label {
+                font-size: 0.85rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .brand-logo i {
+                font-size: 2rem;
+            }
+            .social-login .btn {
+                padding: 5px 10px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container animate__animated animate__fadeInUp" data-aos="zoom-in" data-aos-duration="800">
+        <div class="brand-logo">
+            <i class="fas fa-spa"></i>
+        </div>
+        <h2>Register with Ivory Glow</h2>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        <form action="{{ route('register.store') }}" method="POST">
+            @csrf
+            <div class="row g-2">
+                <div class="col-md-4">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required>
+                    @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-md-4">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-md-4">
+                    <label for="phone_number" class="form-label">Phone Number</label>
+                    <input type="tel" name="phone_number" id="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}" required>
+                    @error('phone_number')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-md-4">
+                    <label for="nic" class="form-label">NIC</label>
+                    <input type="text" name="nic" id="nic" class="form-control @error('nic') is-invalid @enderror" value="{{ old('nic') }}" required>
+                    @error('nic')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-md-4">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" required>
+                        <i class="bi bi-eye-slash password-toggle" id="passwordToggle"></i>
+                    </div>
+                    @error('password')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-md-4">
+                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                    <div class="input-group">
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
+                        <i class="bi bi-eye-slash password-toggle" id="passwordConfirmationToggle"></i>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea name="address" id="address" class="form-control textarea @error('address') is-invalid @enderror" rows="2" required>{{ old('address') }}</textarea>
+                    @error('address')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </div>
+        </form>
+        <p class="text-center mt-2">
+            Already have an account? <a href="{{ route('login') }}" class="btn-link">Log in</a>
+        </p>
+        <div class="social-login">
+            <p>Or register with</p>
+            <a href="#" class="btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="btn"><i class="fab fa-google"></i></a>
+            <a href="#" class="btn"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init();
+
+        // Password toggle functionality
+        const passwordInput = document.getElementById('password');
+        const passwordToggle = document.getElementById('passwordToggle');
+        const passwordConfirmationInput = document.getElementById('password_confirmation');
+        const passwordConfirmationToggle = document.getElementById('passwordConfirmationToggle');
+
+        passwordToggle.addEventListener('click', () => {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordToggle.classList.remove('bi-eye-slash');
+                passwordToggle.classList.add('bi-eye');
+            } else {
+                passwordInput.type = 'password';
+                passwordToggle.classList.remove('bi-eye');
+                passwordToggle.classList.add('bi-eye-slash');
+            }
+        });
+
+        passwordConfirmationToggle.addEventListener('click', () => {
+            if (passwordConfirmationInput.type === 'password') {
+                passwordConfirmationInput.type = 'text';
+                passwordConfirmationToggle.classList.remove('bi-eye-slash');
+                passwordConfirmationToggle.classList.add('bi-eye');
+            } else {
+                passwordConfirmationInput.type = 'password';
+                passwordConfirmationToggle.classList.remove('bi-eye');
+                passwordConfirmationToggle.classList.add('bi-eye-slash');
+            }
+        });
+    </script>
+</body>
+</html>
